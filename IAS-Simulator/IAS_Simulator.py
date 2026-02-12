@@ -11,11 +11,11 @@ class CPU:
         self.PC  = None  # Program Counter
 
         ## Register File
-        self.AC  = 0     # Accumulator
-        self.MAR = None  # Memory Address Register
-        self.MBR = None  # Memory Buffer Register
-        self.IR  = None  # Instruction Register
-        self.IBR = None  # Instruction Buffer Register
+        self.AC  = 0     # Accumulator                 - results of + or -
+        self.MAR = None  # Memory Address Register     - address in RAM
+        self.MBR = None  # Memory Buffer Register      - data retrieved from RAM
+        self.IR  = None  # Instruction Register        - current instruction
+        self.IBR = None  # Instruction Buffer Register - next instruction
 
         ## ALU
         def add():  self.AC            += self.MBR
@@ -57,21 +57,26 @@ class CPU:
         self.IR = None
 
 
-## I know, I know
 ## They used punch cards or telegram paper or whatever
 PUNCH_CARD_LIB = {
-    "myProgram": [
+    "partC": [
         4,
         7,
         2,
         0,
         (("LOAD", 0),    ("SUB" , 1)),
         (("DIV" , 2),    ("STOR", 3)),
-        (("HALT", None), ( None , None))
+        (("HALT", None), None)
     ],
 
-    "mySecondProgram": [
-        None
+    "partD": [
+        4,
+        8,
+        13,
+        0,
+        (("LOAD", 0),  ("ADD" , 1)),
+        (("ADD" ,  2), ("STOR", 3)),
+        (("HALT", None), None)
     ]
 }
 
@@ -98,11 +103,10 @@ class IAS():
 
 def main():
     myComputer = IAS()
-    print(f"Initial AC value = {myComputer.CPU.AC}")
-    myComputer.runProgram(PUNCH_CARD_LIB["myProgram"], PC=4)
-    print(f"Final value of Y (memory[3]) = {myComputer.memory[3]}")
+    myComputer.runProgram(PUNCH_CARD_LIB["partC"], PC=4)
 
-
+    myComputer.CPU.clockIsPowered = True
+    myComputer.runProgram(PUNCH_CARD_LIB["partD"], PC=4)
 
 
 if __name__ == "__main__":

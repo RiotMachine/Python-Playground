@@ -93,8 +93,10 @@ class IAS():
         self.CPU = CPU(self.memory)
 
     def runProgram(self, program, PC=0):
+        # load program into primary memory
         for index, word in enumerate(program):
             self.memory[index] = word
+        # initialize Program Counter to desired value
         self.CPU.PC = PC
         while (self.CPU.clockIsPowered):
             self.CPU.fetch()

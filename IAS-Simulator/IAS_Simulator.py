@@ -75,7 +75,7 @@ PUNCH_CARD_LIB = {
         13,
         0,
         (("LOAD", 0),  ("ADD" , 1)),
-        (("ADD" ,  2), ("STOR", 3)),
+        (("ADD" , 2),  ("STOR", 3)),
         (("HALT", None), None)
     ]
 }
@@ -104,9 +104,12 @@ class IAS():
 def main():
     myComputer = IAS()
     myComputer.runProgram(PUNCH_CARD_LIB["partC"], PC=4)
+    print(f"(4 - 7) / 2 = {myComputer.memory[3]}")
 
     myComputer.CPU.clockIsPowered = True
     myComputer.runProgram(PUNCH_CARD_LIB["partD"], PC=4)
+    print(f"4 + 8 + 13 = {myComputer.memory[3]}")
+
 
 
 if __name__ == "__main__":

@@ -22,15 +22,15 @@
                     {% with flashes = get_flashed_messages() %}
                     {% if flashes %}
                     {% for flash in flashes %}
-                        <h3>
-                            {{ flash }}
-                        </h3>
+                    <h3>
+                        {{ flash }}
+                    </h3>
                     {% endfor %}
                     {% endif %}
                     {% endwith %}
                 </div>
             </div>
-            <div class="row justify-content-center mb-3">
+            <div class="row justify-content-center">
                 <div class="col-10">
                     <form method="POST">
                         <label for="email" class="form-label">
@@ -54,13 +54,12 @@
                         </label>
                         <textarea class="form-control" id="freetext" 
                             name="freetext" rows="3" required></textarea>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-10 text-center">
-                        <button type="submit" class="btn btn-primary">
-                            Submit
-                        </button>
+
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-primary">
+                                Submit
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
